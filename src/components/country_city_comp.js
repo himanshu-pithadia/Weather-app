@@ -68,8 +68,14 @@ export default function CountryCity()
     function setData(value)
     {
         setCity('');
+        if(value!==null)
         setCountry(value.name);
+        else
+        setCountry('');
+        if(value!==null)
         setCountryiso(value.Iso3);
+        else
+        setCountryiso('');
         
     }
 
@@ -90,6 +96,7 @@ export default function CountryCity()
                     // onFocus={(event)=>{handleFocus()}}
                     // isOptionEqualToValue={(option,value)=>{return option.name===value.name}}
                     loading
+                    clearText='clear'
                     id="country-select-demo"
                     sx={{ width: 500 }}
                     options={countries}
@@ -118,7 +125,7 @@ export default function CountryCity()
             
             <div className='field'>
             {country===''?<></>: cityloading? <LoadingSpinner />:<Autocomplete
-                    onChange={(event, value) => {setCity(value)}} 
+                    onChange={(event, value) => {(value!==null) ? setCity(value):setCity('')}} 
                     inputValue={city}
                     id="city-select-demo"
                     // isOptionEqualToValue={(option,value)=>{return option===value}}
