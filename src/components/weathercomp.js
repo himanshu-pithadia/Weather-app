@@ -1,14 +1,13 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react"
-import { cityname, countryname, } from "./country_city_comp";
+import React, { useEffect, useState } from "react"
 import { latlonurl,weatherurl } from "../urls";
 import '../weatherdesign.css';
 import LoadingSpinner from './loadercomp';
 
-export default function WeatherComp(){
+export default function WeatherComp(props){
 
-    const city = useContext(cityname);
-    const country = useContext(countryname);
+    const city = props.city;
+    const country = props.country;
 
     const[latlon,setLatLon] = useState({"lat":'',"lon":''});
     const[temp,setTemp] = useState('');
@@ -29,7 +28,7 @@ export default function WeatherComp(){
                     const lat = response[0].lat
                     const lon = response[0].lon
                     setLatLon({"lat":lat,"lon":lon});
-                    //console.log(latlon)
+                    
                 })
             }
 
@@ -49,7 +48,7 @@ export default function WeatherComp(){
                 axios.get(url)
                 .then(response=>response.data)
                 .then(response=>{
-                    console.log(response.main.temp)
+                    
                     setTemp(response.main.temp);
                     setType(response.weather[0].description);
                     setWind(response.wind.speed);
@@ -73,11 +72,7 @@ export default function WeatherComp(){
     return (
 
         <>
-            {/* <h1>country is {country}</h1>
-            <h1>city is {city} </h1>
-            <h1>{latlon.lat} {latlon.lon}</h1> */}
-
-            {/* weather car */}
+         {/* weather card start */}
 
             {latlon.lat==='' && latlon.lat==='' ? <div className="loader"><LoadingSpinner/></div>: isLoading?<div className="loader"><LoadingSpinner/></div>:<div className="container-fluid">
                 <div className="row justify-content-center">
@@ -102,8 +97,6 @@ export default function WeatherComp(){
                 </div>
             </div>}
             
-            
-
             {/* weather card end */}
 
 

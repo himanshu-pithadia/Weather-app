@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
 .App {
   text-align: center;
 }
 
-.App-logo {
+/*.App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,7 +36,7 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .container{
 
@@ -55,4 +56,14 @@
   margin: 50px auto;
 }
 
+.heading{
+  font-size: 50px;
+  color: #5c5c5c;
+  font-family: 'Marcellus', serif;
+}
+
+.mainheading{
+  text-align: center;
+  
+}
 
